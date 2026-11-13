@@ -34,29 +34,32 @@ observed defect goes to human review instead of being called correct.
 - `agreement.py`: Cohen's kappa between two annotators, and between each annotator and the
   automated label.
 
-## First run (40 mutants, 5 problems)
+## Demo run (40 mutants, 5 problems)
 
-| observed | count | share |
-|---|---|---|
-| fails the lab-style tests | 32 | 80% |
-| passes lab tests, fails adversarial tests | 7 | 18% |
-| no observed defect | 1 | 2% |
+This run checks that the pipeline works. It is not a finding.
 
-- 7 of 40 mutants would pass a typical lab autograder while being wrong. Example: in binary
-  search, `hi = mid - 2` passes the three lab cases and fails on an 18-element array.
-- The single "no observed defect" case is an equivalent mutant: changing `<` to `<=` after an
-  `==` check has already returned. Its intended flaw is real; its observed defect is none. That
-  is the intent-versus-defect gap in one example.
-- These are mechanical mutants, not LLM output, so the shares say nothing yet about how an LLM
-  Navigator behaves. That comparison is the next step.
+| observed | count |
+|---|---|
+| fails the lab-style tests | 32 |
+| passes lab-style tests, fails adversarial tests | 7 |
+| no observed defect | 1 |
+
+- I wrote both the mutants and the lab-style tests, so "7 of 40 pass the lab-style tests" measures
+  how weak those few tests are. It says nothing about AlgoGPT's tests or its Navigator output.
+- The "no observed defect" case is an equivalent mutant (`<` changed to `<=` after an `==` check
+  has already returned), a known artefact of mutation testing.
+- For mutants the change is known, so the annotation sheet adds nothing here. It exists for
+  Navigator outputs, where the intended flaw is unknown and tests are incomplete.
+- `llm_generate.py` would show how GPT-4o flaws behave under my own prompts and problems. That
+  is still not Navigator, which uses its own prompts and scales flaws to the student's instruction.
 
 ## Limitations
 
 - Passing tests does not prove correctness, and failing tests shows a defect, not intent.
 - The adversarial suites are random differential tests against one reference; they can miss
   defects that need specific structures.
-- "How visible is this defect to a novice" is not measured here. The annotation sheet collects
-  a human rating for it; nothing in this repo uses student data.
+- Nothing here measures how hard a defect is for a student to see. Test results are not a proxy
+  for that. No student data is used.
 
 ## Run
 
