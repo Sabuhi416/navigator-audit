@@ -1,0 +1,412 @@
+id,problem,code,annotator,defect_present(yes/no/unsure),defect_type,would_a_novice_notice(1-5),notes
+binary_search-mut05,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] != target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+level_order-mut05,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.right)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+middle_node-mut01,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow",,,,,
+reverse_list-mut01,reverse_list,"def reverse_list(head):
+    prev = None
+    cur = head
+    while cur is not None:
+        nxt = cur.next.next
+        cur.next = prev
+        prev = cur
+        cur = nxt
+    return prev",,,,,
+middle_node-mut04,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next.next
+        fast = fast.next.next
+    return slow",,,,,
+binary_search-mut10,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -2",,,,,
+level_order-mut00,level_order,"def level_order(root):
+    if root is None:
+        pass
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+is_valid_bst-mut00,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            pass
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+binary_search-mut08,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 2
+        else:
+            hi = mid - 1
+    return -1",,,,,
+middle_node-mut00,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is not None or fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow",,,,,
+level_order-mut09,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.left)
+        level = nxt
+    return out",,,,,
+binary_search-mut00,binary_search,"def search(nums, target):
+    lo, hi = (1, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+is_valid_bst-mut07,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.right, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+middle_node-mut03,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow",,,,,
+level_order-mut08,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.left is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+reverse_list-mut00,reverse_list,"def reverse_list(head):
+    prev = None
+    cur = head
+    while cur is None:
+        nxt = cur.next
+        cur.next = prev
+        prev = cur
+        cur = nxt
+    return prev",,,,,
+is_valid_bst-mut01,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is not None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+level_order-mut01,level_order,"def level_order(root):
+    if root is not None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+is_valid_bst-mut06,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) or check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+is_valid_bst-mut03,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low and node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+middle_node-mut06,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next.next
+    return slow",,,,,
+level_order-mut02,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                pass
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+binary_search-mut07,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] <= target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+is_valid_bst-mut05,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val > high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+level_order-mut07,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+middle_node-mut02,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow",,,,,
+binary_search-mut02,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+binary_search-mut01,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 2)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+level_order-mut03,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+middle_node-mut05,middle_node,"def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next.next
+    return slow",,,,,
+is_valid_bst-mut08,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.left, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+level_order-mut06,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                pass
+        level = nxt
+    return out",,,,,
+is_valid_bst-mut02,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            pass
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+binary_search-mut06,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            pass
+        else:
+            hi = mid - 1
+    return -1",,,,,
+level_order-mut04,level_order,"def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.right is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out",,,,,
+binary_search-mut04,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            pass
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+binary_search-mut03,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 3
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1",,,,,
+is_valid_bst-mut04,is_valid_bst,"def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val < low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))",,,,,
+binary_search-mut09,binary_search,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 2
+    return -1",,,,,
+reverse_list-mut02,reverse_list,"def reverse_list(head):
+    prev = None
+    cur = head
+    while cur is not None:
+        nxt = cur.next
+        pass
+        prev = cur
+        cur = nxt
+    return prev",,,,,

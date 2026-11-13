@@ -1,0 +1,412 @@
+id,problem,source,intended_flaw,change,incomplete_code,observed,counterexample,code
+binary_search-mut00,binary_search,mutation,off_by_one_constant,constant changed to 1,False,course_fail,"{""input"": [[5], 5], ""got"": ""-1"", ""expected"": ""0""}","def search(nums, target):
+    lo, hi = (1, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut01,binary_search,mutation,off_by_one_constant,constant changed to 2,False,course_fail,"{""input"": [[5], 5], ""got"": ""-1"", ""expected"": ""0""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 2)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut02,binary_search,mutation,boundary_or_comparison,comparison changed to Lt,False,course_fail,"{""input"": [[5], 5], ""got"": ""-1"", ""expected"": ""0""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut03,binary_search,mutation,off_by_one_constant,constant changed to 3,False,course_fail,"{""input"": ""course suite"", ""got"": ""timeout""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 3
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut04,binary_search,mutation,dropped_branch,body of if at line 6 removed,False,course_fail,"{""input"": [[-1, 0, 3, 5, 9, 12], 9], ""got"": ""-1"", ""expected"": ""4""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            pass
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut05,binary_search,mutation,boundary_or_comparison,comparison changed to NotEq,False,course_fail,"{""input"": [[-1, 0, 3, 5, 9, 12], 9], ""got"": ""2"", ""expected"": ""4""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] != target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut06,binary_search,mutation,dropped_branch,body of if at line 8 removed,False,course_fail,"{""input"": ""course suite"", ""got"": ""timeout""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            pass
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut07,binary_search,mutation,boundary_or_comparison,comparison changed to LtE,False,no_observed_defect,,"def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] <= target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut08,binary_search,mutation,off_by_one_constant,constant changed to 2,False,adversarial_only,"{""input"": [[1, 3], 3], ""got"": ""-1"", ""expected"": ""1""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 2
+        else:
+            hi = mid - 1
+    return -1"
+binary_search-mut09,binary_search,mutation,off_by_one_constant,constant changed to 2,False,adversarial_only,"{""input"": [[-89, -68, -67, -52, -44, -40, -26, -18, 22, 23, 30, 44, 54, 68, 72, 77, 89, 97], 54], ""got"": ""-1"", ""expected"": ""12""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 2
+    return -1"
+binary_search-mut10,binary_search,mutation,off_by_one_constant,constant changed to 2,False,course_fail,"{""input"": [[-1, 0, 3, 5, 9, 12], 2], ""got"": ""-2"", ""expected"": ""-1""}","def search(nums, target):
+    lo, hi = (0, len(nums) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -2"
+middle_node-mut00,middle_node,mutation,and_or_swap,and/or swapped,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""EXC:AttributeError"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is not None or fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow"
+middle_node-mut01,middle_node,mutation,boundary_or_comparison,comparison changed to Is,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""[1, 2, 3, 4, 5]"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow"
+middle_node-mut02,middle_node,mutation,boundary_or_comparison,comparison changed to Is,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""[1, 2, 3, 4, 5]"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow"
+middle_node-mut03,middle_node,mutation,wrong_pointer,pointer changed at line 4,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""EXC:AttributeError"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow"
+middle_node-mut04,middle_node,mutation,wrong_pointer,pointer changed at line 5,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""[5]"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next.next
+        fast = fast.next.next
+    return slow"
+middle_node-mut05,middle_node,mutation,wrong_pointer,pointer changed at line 6,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""EXC:AttributeError"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next.next
+    return slow"
+middle_node-mut06,middle_node,mutation,wrong_pointer,pointer changed at line 6,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""EXC:AttributeError"", ""expected"": ""[3, 4, 5]""}","def middle_node(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next.next
+    return slow"
+reverse_list-mut00,reverse_list,mutation,boundary_or_comparison,comparison changed to Is,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""[]"", ""expected"": ""[5, 4, 3, 2, 1]""}","def reverse_list(head):
+    prev = None
+    cur = head
+    while cur is None:
+        nxt = cur.next
+        cur.next = prev
+        prev = cur
+        cur = nxt
+    return prev"
+reverse_list-mut01,reverse_list,mutation,wrong_pointer,pointer changed at line 6,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""EXC:AttributeError"", ""expected"": ""[5, 4, 3, 2, 1]""}","def reverse_list(head):
+    prev = None
+    cur = head
+    while cur is not None:
+        nxt = cur.next.next
+        cur.next = prev
+        prev = cur
+        cur = nxt
+    return prev"
+reverse_list-mut02,reverse_list,mutation,dropped_pointer_update,pointer update at line 7 removed,False,course_fail,"{""input"": [[1, 2, 3, 4, 5]], ""got"": ""[5]"", ""expected"": ""[5, 4, 3, 2, 1]""}","def reverse_list(head):
+    prev = None
+    cur = head
+    while cur is not None:
+        nxt = cur.next
+        pass
+        prev = cur
+        cur = nxt
+    return prev"
+is_valid_bst-mut00,is_valid_bst,mutation,dropped_branch,body of if at line 4 removed,False,course_fail,"{""input"": [[2, 1, 3]], ""got"": ""EXC:AttributeError"", ""expected"": ""True""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            pass
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut01,is_valid_bst,mutation,boundary_or_comparison,comparison changed to IsNot,False,course_fail,"{""input"": [[5, 1, 4, null, null, 3, 6]], ""got"": ""True"", ""expected"": ""False""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is not None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut02,is_valid_bst,mutation,dropped_branch,body of if at line 6 removed,False,course_fail,"{""input"": [[5, 1, 4, null, null, 3, 6]], ""got"": ""True"", ""expected"": ""False""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            pass
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut03,is_valid_bst,mutation,and_or_swap,and/or swapped,False,course_fail,"{""input"": [[5, 1, 4, null, null, 3, 6]], ""got"": ""True"", ""expected"": ""False""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low and node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut04,is_valid_bst,mutation,boundary_or_comparison,comparison changed to Lt,False,adversarial_only,"{""input"": [[-27, null, 11, -27, 20, null, null, 15, 31]], ""got"": ""True"", ""expected"": ""False""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val < low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut05,is_valid_bst,mutation,boundary_or_comparison,comparison changed to Gt,False,adversarial_only,"{""input"": [[1, 1]], ""got"": ""True"", ""expected"": ""False""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val > high:
+            return False
+        return check(node.left, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut06,is_valid_bst,mutation,and_or_swap,and/or swapped,False,course_fail,"{""input"": [[5, 1, 4, null, null, 3, 6]], ""got"": ""True"", ""expected"": ""False""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) or check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut07,is_valid_bst,mutation,wrong_pointer,pointer changed at line 8,False,course_fail,"{""input"": [[2, 1, 3]], ""got"": ""False"", ""expected"": ""True""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.right, low, node.val) and check(node.right, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+is_valid_bst-mut08,is_valid_bst,mutation,wrong_pointer,pointer changed at line 8,False,course_fail,"{""input"": [[2, 1, 3]], ""got"": ""False"", ""expected"": ""True""}","def is_valid_bst(root):
+
+    def check(node, low, high):
+        if node is None:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return check(node.left, low, node.val) and check(node.left, node.val, high)
+    return check(root, float('-inf'), float('inf'))"
+level_order-mut00,level_order,mutation,dropped_branch,body of if at line 3 removed,False,adversarial_only,"{""input"": [[]], ""got"": ""EXC:AttributeError"", ""expected"": ""[]""}","def level_order(root):
+    if root is None:
+        pass
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut01,level_order,mutation,boundary_or_comparison,comparison changed to IsNot,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""[]"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is not None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut02,level_order,mutation,dropped_branch,body of if at line 10 removed,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""[[3], [20], [7]]"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                pass
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut03,level_order,mutation,boundary_or_comparison,comparison changed to Is,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""EXC:AttributeError"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut04,level_order,mutation,wrong_pointer,pointer changed at line 10,False,adversarial_only,"{""input"": [[1, 2]], ""got"": ""[[1]]"", ""expected"": ""[[1], [2]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.right is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut05,level_order,mutation,wrong_pointer,pointer changed at line 11,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""[[3], [20, 20], [7, 7, 7, 7]]"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.right)
+            if n.right is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut06,level_order,mutation,dropped_branch,body of if at line 12 removed,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""[[3], [9]]"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                pass
+        level = nxt
+    return out"
+level_order-mut07,level_order,mutation,boundary_or_comparison,comparison changed to Is,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""EXC:AttributeError"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut08,level_order,mutation,wrong_pointer,pointer changed at line 12,False,adversarial_only,"{""input"": [[1, 2]], ""got"": ""EXC:AttributeError"", ""expected"": ""[[1], [2]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.left is not None:
+                nxt.append(n.right)
+        level = nxt
+    return out"
+level_order-mut09,level_order,mutation,wrong_pointer,pointer changed at line 13,False,course_fail,"{""input"": [[3, 9, 20, null, null, 15, 7]], ""got"": ""[[3], [9, 9]]"", ""expected"": ""[[3], [9, 20], [15, 7]]""}","def level_order(root):
+    if root is None:
+        return []
+    out, level = ([], [root])
+    while level:
+        out.append([n.val for n in level])
+        nxt = []
+        for n in level:
+            if n.left is not None:
+                nxt.append(n.left)
+            if n.right is not None:
+                nxt.append(n.left)
+        level = nxt
+    return out"
